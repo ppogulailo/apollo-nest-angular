@@ -1,0 +1,23 @@
+<div class="row" *ngIf="users$ | async as users">
+  <div class="col_sm-6 col-md-4 col-lg-4">
+    <div class="list-group mb-2">
+      <button class="btn btn-outline-primary">
+        <app-icon icon="bi bi-plus"></app-icon>
+        Add User
+      </button>
+    </div>
+    <div class="list-group">
+      <a
+        *ngFor="let u of users"
+        class="list-group-item list-group-item-action"
+      [routerLink]="[u.id]"
+      >
+        {{u.name}}
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-6 col_md-8 col-lg-8">
+    <router-outlet>
+    </router-outlet>
+  </div>
+</div>

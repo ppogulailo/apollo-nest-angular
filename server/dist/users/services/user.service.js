@@ -25,7 +25,9 @@ let UserService = class UserService {
         return await this.userRepository.save(Object.assign({}, createUserInput));
     }
     async getOneUser(id) {
-        return await this.userRepository.findOne({ id });
+        return await this.userRepository.findOne({ where: {
+                id: id
+            } });
     }
     async getAllUsers() {
         return await this.userRepository.find();

@@ -19,8 +19,9 @@ export class UserService {
     }
 
     async getOneUser(id:number){
-        // @ts-ignore
-        return await this.userRepository.findOne({ id })
+        return await this.userRepository.findOne({ where:{
+            id:id
+            } })
     }
 
     async getAllUsers(): Promise<UserEntity[]> {

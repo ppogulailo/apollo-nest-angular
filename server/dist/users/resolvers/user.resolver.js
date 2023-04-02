@@ -32,6 +32,7 @@ let UserResolver = class UserResolver {
         return await this.userService.removeUser(id);
     }
     async getOneUser(id) {
+        console.log(id);
         return await this.userService.getOneUser(id);
     }
     async getAllUsers() {
