@@ -36,21 +36,21 @@ export class UserCardComponent implements OnInit {
     this.isChange = !this.isChange
   }
 
-  // delete(id: number) {
-  //   if (confirm('Удалить пользователя?')) {
-  //     this.usersService.deleteUser(id).subscribe(_ => {
-  //       this.router.navigate(['/users'])
-  //     })
-  //   }
-  // }
-  //
-  // onSubmit(user: IUser) {
-  //   const {name, email, id} = user
-  //   this.usersService.updateUser(id, name, email).subscribe(user => {
-  //     if (user) {
-  //       this.change()
-  //       // this.router.navigate(['/users', user.id])
-  //     }
-  //   })
-  // }
+  delete(id: number) {
+    if (confirm('Delete user?')) {
+      this.usersService.deleteUser(id).subscribe(_ => {
+        this.router.navigate(['/users'])
+      })
+    }
+  }
+
+  onSubmit(user: IUser) {
+    const {name, email, id} = user
+    this.usersService.updateUser(id, name, email).subscribe(user => {
+      if (user) {
+        this.change()
+        this.router.navigate(['/users', user.id])
+      }
+    })
+  }
 }

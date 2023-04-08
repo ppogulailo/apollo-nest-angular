@@ -1,0 +1,34 @@
+<div class="row" *ngIf="users$ | async as users">
+  <div class="col_sm-6 col-md-4 col-lg-4">
+    <div class="list-group mb-2">
+      <button class="btn btn-outline-primary" (click)="isNewTrigger()">
+        <app-icon icon="bi bi-plus"></app-icon>
+        Add User
+      </button>
+    </div>
+    <div class="list-group">
+      <a
+        *ngFor="let u of users"
+        class="list-group-item list-group-item-action"
+      [routerLink]="[u.id]"
+        (click)="isNew=false"
+      >
+        {{u.name}}
+      </a>
+    </div>
+  </div>
+  <ng-container>
+    <div class="list-group mb-2" *ngIf="users.length===0">
+      <div class="alert alert-danger text-center">Users doesnt exist!</div>
+    </div>
+  </ng-container>
+  <div class="col-sm-6 col_md-8 col-lg-8">
+    <ng-container>
+      <router-outlet *ngIf="!isNew">
+      </router-outlet>
+    </ng-container>
+    <ng-container *ngIf="isNew">
+      <app-user-form (onSubmit)="onSubmit($event)"></app-user-form>
+    </ng-container>
+  </div>
+</div>
